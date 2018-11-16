@@ -67,17 +67,38 @@ $("#SearchButton").click(function () {
     }
 });
 
+//KELL
 
-setInterval(function () {
-    document.getElementById("progressBar").value = 30 - --timeLeft;
-    console.log(timeLeft)
-    if (timeLeft <= 0) {
-        timerState = false;
-        console.log(timerState)
-        clearInterval(donwloadTimer);
+// Mitu sekundit loeb
+var milleniLoeme = 30
+// Counter, mis suureneb 1000 võrra igal loopil
+var now = 0
+
+// Iga sekundi tagant taaskäivitub
+var x = setInterval(function() {
+
+    document.getElementById("progressBar").value = now;
+    
+    // Lahutab pikkusest igas sekundis suureneva muutuja, kontroll et teada, kas aeg otsas ja sekundid printimiseks
+    var kontroll = milleniLoeme * 1000 - now;
+    
+    var sekundid = (milleniLoeme * 1000 - now) / 1000
+    now += 1000;
+    
+    // Output the result in an element with id="demo"
+    document.getElementById("timer").innerHTML = sekundid+ " sekundit jäänud.";
+    
+    // If the count down is over, write some text 
+    if (kontroll < 1001) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "Aeg sai otsa.";
+        window.otsas = true;
+        console.log(otsas);
     }
 }, 1000);
 
 
-
-
+var aegOtsas;
+function foo() {
+		window.otsas = false;
+}
