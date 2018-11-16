@@ -1,12 +1,49 @@
 var pakutud = [];
-var timerState = true; // kui timer jookseb nulli, siis ei saa enam otsinguid teha
 
-var timeLeft = 30;
+
+//KELL
+
+// Mitu sekundit loeb
+var milleniLoeme = 30
+// Counter, mis suureneb 1000 võrra igal loopil
+var now = 0
+
+// Iga sekundi tagant taaskäivitub
+var x = setInterval(function() {
+
+    document.getElementById("progressBar").value = now;
+
+    // Lahutab pikkusest igas sekundis suureneva muutuja, kontroll et teada, kas aeg otsas ja sekundid printimiseks
+    var kontroll = milleniLoeme * 1000 - now;
+
+    var sekundid = (milleniLoeme * 1000 - now) / 1000
+    now += 1000;
+
+    // Output the result in an element with id="demo"
+    document.getElementById("timer").innerHTML = sekundid+ " sekundit jäänud.";
+
+    // If the count down is over, write some text
+    if (kontroll < 1001) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "Aeg sai otsa.";
+        window.otsas = true;
+        console.log(otsas);
+    }
+}, 1000);
+
+
+var aegOtsas;
+
+function foo() {
+    window.otsas = false;
+    window.now = 0;
+}
+
 
 //Kui search nupule vajutada, siis jookseb funktsioon
 $("#SearchButton").click(function () {
     //Kui aeg ei ole otsas, siis otsimise funktsioon töötab
-    if (timerState) {
+    if (!window.otsas) {
 
         $("#pakutudVastused").empty();
         $("#displayData").empty();
@@ -16,7 +53,6 @@ $("#SearchButton").click(function () {
 
         console.log("Search url: " + searchUrl);
         var request = new XMLHttpRequest();
-        console.log("test123: " + timerState)
 
 
 //kasutab GET-i, et avada uus request
@@ -49,7 +85,8 @@ $("#SearchButton").click(function () {
                     pakutud.push(data[0]["name"])
                     console.log("Pakutud vastuste list: " + pakutud)
                     //setib aja uuesti 30 sekundi peale
-                    timeLeft = 30;
+                    window.now = 0;
+                    console.log(now)
                 }
 
             } else {
@@ -67,38 +104,3 @@ $("#SearchButton").click(function () {
     }
 });
 
-//KELL
-
-// Mitu sekundit loeb
-var milleniLoeme = 30
-// Counter, mis suureneb 1000 võrra igal loopil
-var now = 0
-
-// Iga sekundi tagant taaskäivitub
-var x = setInterval(function() {
-
-    document.getElementById("progressBar").value = now;
-    
-    // Lahutab pikkusest igas sekundis suureneva muutuja, kontroll et teada, kas aeg otsas ja sekundid printimiseks
-    var kontroll = milleniLoeme * 1000 - now;
-    
-    var sekundid = (milleniLoeme * 1000 - now) / 1000
-    now += 1000;
-    
-    // Output the result in an element with id="demo"
-    document.getElementById("timer").innerHTML = sekundid+ " sekundit jäänud.";
-    
-    // If the count down is over, write some text 
-    if (kontroll < 1001) {
-        clearInterval(x);
-        document.getElementById("timer").innerHTML = "Aeg sai otsa.";
-        window.otsas = true;
-        console.log(otsas);
-    }
-}, 1000);
-
-
-var aegOtsas;
-function foo() {
-		window.otsas = false;
-}
