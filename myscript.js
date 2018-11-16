@@ -7,14 +7,17 @@ var timeLeft = 30;
 $("#SearchButton").click(function () {
     //Kui aeg ei ole otsas, siis otsimise funktsioon töötab
     if (timerState) {
+
         $("#pakutudVastused").empty();
         $("#displayData").empty();
         var searchTermin = $("#searchTermin").val();
         searchTermin = searchTermin.split(/[ ]+/).join('_');
         var searchUrl = "https://restcountries.eu/rest/v2/name/" + searchTermin;
+
         console.log("Search url: " + searchUrl);
         var request = new XMLHttpRequest();
         console.log("test123: " + timerState)
+
 
 //kasutab GET-i, et avada uus request
         request.open("GET", searchUrl, true);
@@ -22,6 +25,7 @@ $("#SearchButton").click(function () {
 
 //Laeb JSONi siin
         request.onload = function () {
+
 
             // salvestab JSONi vastuse
             var data = JSON.parse(this.response);
@@ -73,6 +77,7 @@ setInterval(function () {
         clearInterval(donwloadTimer);
     }
 }, 1000);
+
 
 
 
