@@ -21,14 +21,11 @@ a {
   cursor: pointer;
   text-decoration:none;
   margin: 25px;
-  padding-top: 50px;
-  padding-bottom: 80px;
   text-transform: uppercase;
 }
 
 a:hover {
   opacity: 0.5;
-  padding-bottom: 30px;
 }
 
 p {
