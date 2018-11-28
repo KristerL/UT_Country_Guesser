@@ -1,6 +1,5 @@
 body{
-  background-image: url(./images/bg.jpg);
-  font-family: georgia;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   width: 100%;
   height: 100%;
@@ -12,7 +11,7 @@ h1 {
   margin: auto;
   font-size: 60px;
   color: black;
-  padding-top: 50px;
+  padding-top: 40px;
   padding-bottom: 20px;
 }
   
@@ -23,20 +22,28 @@ a {
   text-decoration:none;
   margin: 25px;
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
+  text-transform: uppercase;
 }
 
 a:hover {
-  color: grey;
+  opacity: 0.5;
+  padding-bottom: 30px;
 }
 
 p {
   padding-right: 150px;
   padding-left: 150px;
+  font-family: "Segoe UI";
   }
 
 #end p {
   font-size: 12px;
   font-style: oblique;
   opacity: 0.5;
+}
+
+.resize {
+  width: 50px;
+  height: auto;
 }
