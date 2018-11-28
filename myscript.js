@@ -88,7 +88,7 @@ $('document').ready(function () {
                     //Kui pakutud vastust ei ole varem pakutud
                     if ((pakutud.includes(data[0]["name"])) == false) {
 
-                        pakutud.push(data[0]["name"])
+                        pakutud.push(" " + data[0]["name"])
                         console.log("Pakutud vastuste list: " + pakutud)
                         //setib aja uuesti 30 sekundi peale
                         window.now = 0;
