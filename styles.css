@@ -1,5 +1,5 @@
 body{
-  background-image: url(./images/bg.jpg);
+  background-image: url(./images/gg.jpg);
   font-family: georgia;
   text-align: center;
   width: 100%;
@@ -22,8 +22,8 @@ a {
   cursor: pointer;
   text-decoration:none;
   margin: 25px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  /*padding-top: 50px;*/
+  /*padding-bottom: 50px;*/
 }
 
 a:hover {
@@ -40,8 +40,3 @@ p {
   font-style: oblique;
   opacity: 0.5;
 }
-ul {
-  text-align: center;
-}
-
-
