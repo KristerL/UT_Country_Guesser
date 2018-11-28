@@ -1,5 +1,7 @@
 //list, msi hoiab pakutud vastuseid
 var pakutud = [];
+//pakutud riikid hulk
+var pakutudNr = 0;
 
 
 //KELL
@@ -27,6 +29,7 @@ var x = setInterval(function () {
     if (kontroll < 1001) {
         clearInterval(x);
         document.getElementById("timer").innerHTML = "Aeg sai otsa.";
+        document.getElementById("pakkumisteNr").innerHTML = "Teadsite " + pakutudNr + " riiki."
         window.otsas = true;
         console.log(otsas);
     }
@@ -90,6 +93,7 @@ $('document').ready(function () {
 
                         pakutud.push(" " + data[0]["name"])
                         console.log("Pakutud vastuste list: " + pakutud)
+                        pakutudNr++;
                         //setib aja uuesti 30 sekundi peale
                         window.now = 0;
                         console.log(now)
