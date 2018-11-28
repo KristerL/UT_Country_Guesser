@@ -11,20 +11,21 @@ h1 {
   font-size: 60px;
   color: black;
   padding-top: 60px;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
 }
   
 a {
-  font-size: 30px;
+  font-size: 40px;
   color: inherit;
   cursor: pointer;
   text-decoration:none;
   margin: 25px;
   text-transform: uppercase;
+  font-family:"Agency FB";
 }
 
 a:hover {
-  opacity: 0.5;
+  color: #43A8A0;
 }
 
 p {
@@ -43,4 +44,9 @@ p {
 .resize {
   width: 50px;
   height: auto;
+}
+
+.resize:hover {
+  opacity: 0.5;
+
 }
