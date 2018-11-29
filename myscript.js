@@ -8,9 +8,27 @@ var pakutudNr = 0;
 //KELL
 
 // Mitu sekundit loeb
-var milleniLoeme = 30
+var milleniLoeme = 5
 // Counter, mis suureneb 1000 võrra igal loopil
 var now = 0
+
+
+//reset nupp not working pls fix
+// $('document').ready(function () {
+//     $("#ResetButton").click(function(){
+//         console.log("test")
+//         pakutud = []
+//         pakutudPrint = []
+//         pakutudNr = 0
+//         $("#pakutudVastused").empty();
+//         $("#displayData").empty();
+//         window.now = 0
+//         window.otsas = true
+//         $("#timer").empty();
+//         $("#pakkumisteNr").empty();
+//
+//
+//     })
 
 // Iga sekundi tagant taaskäivitub
 var x = setInterval(function () {
@@ -46,7 +64,7 @@ function foo() {
 
 
 //Funktsioon, mis vastutab otsimise eest
-$('document').ready(function () {
+
 //Kui search nupule vajutada, siis jookseb funktsioon
     $("#SearchButton").click(function () {
         //Kui aeg ei ole otsas, siis otsimise funktsioon töötab

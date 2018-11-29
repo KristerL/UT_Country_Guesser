@@ -60,12 +60,13 @@ p {
   height: 2em;
 }
 
-#SearchButton{
+#SearchButton, #ResetButton{
   margin: 3%;
   width: 8em;
-  height: 6em
-;
+  height: 6em;
+  font-size: 20px;
 }
+
 
 #gameContent{
   display: block;
