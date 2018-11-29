@@ -69,13 +69,16 @@ p {
 
 #gameContent{
   display: block;
-  margin: 5%;
   margin-bottom: 0;
-  font-size: 40px;
+  font-size: 2em;
   justify-content: flex-start;
 }
 
 h3{
-  font-size: 3em;
+  font-size: 2em;
   margin: 0;
+}
+
+#pakkumisteNr{
+  font-size: 2em;
 }
