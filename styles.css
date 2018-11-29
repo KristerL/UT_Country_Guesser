@@ -54,3 +54,28 @@ p {
   opacity: 0.5;
 
 }
+
+#searchTermin{
+  width: 20em;
+  height: 2em;
+}
+
+#SearchButton{
+  margin: 3%;
+  width: 8em;
+  height: 6em
+;
+}
+
+#gameContent{
+  display: block;
+  margin: 5%;
+  margin-bottom: 0;
+  font-size: 40px;
+  justify-content: flex-start;
+}
+
+h3{
+  font-size: 3em;
+  margin: 0;
+}

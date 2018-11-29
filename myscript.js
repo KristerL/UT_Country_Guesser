@@ -56,6 +56,7 @@ $('document').ready(function () {
 
             //ehitab searchTerminist urli, kuhu request saata
             var searchTermin = $("#searchTermin").val();
+
             searchTermin = searchTermin.split(/[ ]+/).join('_');
             var searchUrl = "https://restcountries.eu/rest/v2/name/" + searchTermin;
 
@@ -72,7 +73,11 @@ $('document').ready(function () {
 
 
                 // salvestab JSONi vastuse
-                var data = JSON.parse(this.response);
+                try {
+                    var data = JSON.parse(this.response);
+                }catch{
+                    var data = [undefined]
+                }
 
                 //kontrollib vastuse olemasolu
                 if (data[0] != undefined) {
@@ -90,6 +95,7 @@ $('document').ready(function () {
 
                     //Kui pakutud vastust ei ole varem pakutud
                     if ((pakutud.includes(data[0]["name"])) == false) {
+
 
                         pakutud.push(" " + data[0]["name"])
                         console.log("Pakutud vastuste list: " + pakutud)
