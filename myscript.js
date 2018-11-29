@@ -1,5 +1,6 @@
 //list, msi hoiab pakutud vastuseid
 var pakutud = [];
+var pakutudPrint = [];
 //pakutud riikid hulk
 var pakutudNr = 0;
 
@@ -63,6 +64,8 @@ $('document').ready(function () {
             var request = new XMLHttpRequest();
 
 
+
+
 //kasutab GET-i, et avada uus request
             request.open("GET", searchUrl, true);
 
@@ -74,12 +77,18 @@ $('document').ready(function () {
                 // salvestab JSONi vastuse
                 var data = JSON.parse(this.response);
 
-                //kontrollib vastuse olemasolu
-                if (data[0] != undefined) {
-                    testArray = data[0].hasOwnProperty("name");
-                    console.log("Kas eksisteerib name type returnis: " + testArray)
-                } else {
+                //kontrollib vastuse olemasolu ning kas sisendi pikkus üle 2 tähe
+                if (searchTermin.length > 2) {
+                    if (data[0] != undefined) {
+                        testArray = data[0].hasOwnProperty("name");
+                        console.log("Kas eksisteerib name type returnis: " + testArray)
+                    } else {
+                        testArray = false;
+                    }
+                }
+                else {
                     testArray = false;
+                    $("#displayData").append("<div id='response'><h3>Sisesta vähemalt 3 tähemärki</h3></div>");
                 }
 
                 //kui saadud vastuses on olemas, siis vaatab kas see vastus eksisteerib
@@ -91,7 +100,8 @@ $('document').ready(function () {
                     //Kui pakutud vastust ei ole varem pakutud
                     if ((pakutud.includes(data[0]["name"])) == false) {
 
-                        pakutud.push(" " + data[0]["name"])
+                        pakutud.push(data[0]["name"])
+                        pakutudPrint.push(" " + data[0]["name"])
                         console.log("Pakutud vastuste list: " + pakutud)
                         pakutudNr++;
                         //setib aja uuesti 30 sekundi peale
@@ -100,11 +110,13 @@ $('document').ready(function () {
                     }
                     //Kui vastust ei ole Annab teada, et riiki ei eksisteeri
                 } else {
-                    console.log("Something went wrong"); //Kui sisendil puudub vastus, siis tagastab selle sõnumi
-                    $("#displayData").append("<div id='response'><h3>Riiki ei eksisteeri</h3></div>");
+                    if (searchTermin.length > 2) {
+                        console.log("Something went wrong"); //Kui sisendil puudub vastus, siis tagastab selle sõnumi
+                        $("#displayData").append("<div id='response'><h3>Paku uus riik</h3></div>");
+                    }
                 }
                 //Peale vastuse olemasolu kontrolli ja vaatamist, lisab pakutud vastuse pakutute listi
-                $("#pakutudVastused").append("<div id='vastused'><h3>" + pakutud + "</h3><p></div>");
+                $("#pakutudVastused").append("<div id='vastused'><h3>" + pakutudPrint + "</h3><p></div>");
                 //Tühjendab inputi välja, et saaks uue riigi sisestada
                 $("input:text").val("");
             };
