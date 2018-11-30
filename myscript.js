@@ -8,7 +8,7 @@ var pakutudNr = 0;
 //KELL
 
 // Mitu sekundit loeb
-var milleniLoeme = 5
+var milleniLoeme = 30
 // Counter, mis suureneb 1000 võrra igal loopil
 var now = 0
 
@@ -66,6 +66,7 @@ function foo() {
 //Funktsioon, mis vastutab otsimise eest
 
 //Kui search nupule vajutada, siis jookseb funktsioon
+$('document').ready(function () {
     $("#SearchButton").click(function () {
         //Kui aeg ei ole otsas, siis otsimise funktsioon töötab
         if (!window.otsas) {
