@@ -50,7 +50,6 @@ var x = setInterval(function () {
         document.getElementById("timer").innerHTML = "Aeg sai otsa.";
         document.getElementById("pakkumisteNr").innerHTML = "Teadsite " + pakutudNr + " riiki."
         window.otsas = true;
-        console.log(otsas);
     }
 }, 1000);
 
@@ -80,24 +79,15 @@ $('document').ready(function () {
             searchTermin = searchTermin.split(/[ ]+/).join('_');
             var searchUrl = "https://restcountries.eu/rest/v2/name/" + searchTermin;
 
-            console.log("Search url: " + searchUrl);
             var request = new XMLHttpRequest();
-
-
-
-
 //kasutab GET-i, et avada uus request
             request.open("GET", searchUrl, true);
-
-
 //Laeb JSONi siin
             request.onload = function () {
-
-
                 // salvestab JSONi vastuse
                 try {
                     var data = JSON.parse(this.response);
-                }catch{
+                } catch {
                     var data = [undefined]
                 }
 
@@ -105,7 +95,6 @@ $('document').ready(function () {
                 if (searchTermin.length > 2) {
                     if (data[0] != undefined) {
                         testArray = data[0].hasOwnProperty("name");
-                        console.log("Kas eksisteerib name type returnis: " + testArray)
                     } else {
                         testArray = false;
                     }
@@ -117,27 +106,19 @@ $('document').ready(function () {
 
                 //kui saadud vastuses on olemas, siis vaatab kas see vastus eksisteerib
                 if (testArray) {
-                    console.log("Kogu andme objekt: " + data);
-                    console.log("Name type väärtus: " + data[0]["name"]);
                     $("#displayData").append("<div id='response'><h3>" + "Viimane pakutud vastus: " + searchTermin + "</h3><p></div>");
 
                     //Kui pakutud vastust ei ole varem pakutud
                     if ((pakutud.includes(data[0]["name"])) == false) {
-
-
                         pakutud.push(data[0]["name"])
                         pakutudPrint.push(" " + data[0]["name"])
-
-                        console.log("Pakutud vastuste list: " + pakutud)
                         pakutudNr++;
                         //setib aja uuesti 30 sekundi peale
                         window.now = 0;
-                        console.log(now)
                     }
                     //Kui vastust ei ole Annab teada, et riiki ei eksisteeri
                 } else {
                     if (searchTermin.length > 2) {
-                        console.log("Something went wrong"); //Kui sisendil puudub vastus, siis tagastab selle sõnumi
                         $("#displayData").append("<div id='response'><h3>Paku uus riik</h3></div>");
                     }
                 }
@@ -146,19 +127,16 @@ $('document').ready(function () {
                 //Tühjendab inputi välja, et saaks uue riigi sisestada
                 $("input:text").val("");
             };
-
-
 //Saadab requesti
             request.send();
             //kuna otsimine toimus ja vastus leit
 
         }
     });
-
     //Kui vajutatakse enterit, siis võtab  seda kui hiire clickina ja jooksutab hiire clicki all olevat funktsiooni
-    $("#searchTermin").keypress(function(e){
+    $("#searchTermin").keypress(function (e) {
         //kui vajutatud nupp on enter
-        if(e.which == 13){
+        if (e.which == 13) {
 
             $("#SearchButton").click();
         }
